@@ -14,7 +14,7 @@ from langchain_core.runnables import RunnablePassthrough
 load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini")
 
-loader = UnstructuredMarkdownLoader("/home/masa/Documents/planning_documentation/index.md")
+loader = UnstructuredMarkdownLoader("resource/planning.md")
 docs = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -39,6 +39,6 @@ rag_chain = (
   | llm
   | StrOutputParser()
 )
-#response_dict = rag_chain.invoke("What is planning")
-#print(response_dict)
+response_dict = rag_chain.invoke("What is planning")
+print(response_dict)
 print(type(llm))
