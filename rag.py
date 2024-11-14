@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
+from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
@@ -14,7 +15,8 @@ from langchain_core.runnables import RunnablePassthrough
 load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini")
 
-loader = UnstructuredMarkdownLoader("resource/planning.md")
+#loader = UnstructuredMarkdownLoader("resource/planning.md")
+loader = CSVLoader("resource/mlb_teams_2012_sample.csv")
 docs = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -39,6 +41,6 @@ rag_chain = (
   | llm
   | StrOutputParser()
 )
-response_dict = rag_chain.invoke("What is planning")
+response_dict = rag_chain.invoke("What is New York Yankees's Win-loss Percentage")
 print(response_dict)
 print(type(llm))
