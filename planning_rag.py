@@ -41,4 +41,4 @@ rag_chain = (
 )
 #response_dict = rag_chain.invoke("What is planning")
 #print(response_dict)
-print(isinstance(llm))
+print(type(llm))
