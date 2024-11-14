@@ -3,7 +3,7 @@
 from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
@@ -14,7 +14,7 @@ from langchain_core.runnables import RunnablePassthrough
 load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini")
 
-loader = TextLoader("/home/masa/Documents/planning_documentation/index.md")
+loader = UnstructuredMarkdownLoader("/home/masa/Documents/planning_documentation/index.md")
 docs = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -39,6 +39,6 @@ rag_chain = (
   | llm
   | StrOutputParser()
 )
-response_dict = rag_chain.invoke("What is planning")
-print(response_dict)
-
+#response_dict = rag_chain.invoke("What is planning")
+#print(response_dict)
+print(isinstance(llm))
