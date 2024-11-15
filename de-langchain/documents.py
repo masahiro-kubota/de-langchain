@@ -13,4 +13,4 @@ class Document(BaseMedia):
   type: Literal["Document"] = "Document"
   
   def __init__(self, page_content: str, **kwargs: Any) -> None:
-    super().__init__(page_content=page_contentm **kwargs)
+    super().__init__(page_content=page_content, **kwargs)
