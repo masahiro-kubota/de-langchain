@@ -4,13 +4,15 @@ from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
-from langchain_community.document_loaders.csv_loader import CSVLoader
+#from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain import hub
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
+
+from delangchain.document_loaders import CSVLoader
 
 load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini")
