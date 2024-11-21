@@ -4,13 +4,14 @@ from pydantic import BaseModel
 
 class Serializable(BaseModel, ABC):
   # Remove default BaseModel init docstrig
-  def __init__(self, *args: Any, **kwargs: Any) -> None:
-    """"""
-    super().__init__(*args, **kwargs)
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+      """"""
+      super().__init__(*args, **kwargs)
 
-  @classmethod
-  def is_lc_serializable(cls) -> bool:
+    @classmethod
+    def is_lc_serializable(cls) -> bool:
+      return False
+
     # TODO implement to_json method
-    return False
 
 
